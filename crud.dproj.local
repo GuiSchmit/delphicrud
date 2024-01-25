@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2024/01/24 11:42:47.000.081,=C:\Users\Guilherme\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/01/24 11:42:59.000.832,=C:\Users\Guilherme\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2024/01/24 13:31:05.000.662,C:\Projeto\Crud 2.0\uTabelas.pas=C:\Users\Guilherme\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2024/01/24 13:31:05.000.662,C:\Projeto\Crud 2.0\uTabelas.dfm=C:\Users\Guilherme\Documents\Embarcadero\Studio\Projects\Unit2.dfm</Transaction>
+    <Transaction>2024/01/24 13:33:15.000.385,C:\Projeto\Crud 2.0\uInicial.pas=C:\Users\Guilherme\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/01/24 13:33:15.000.385,C:\Projeto\Crud 2.0\uInicial.dfm=C:\Users\Guilherme\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2024/01/24 13:33:20.000.244,C:\Projeto\Crud 2.0\crud.dproj=C:\Users\Guilherme\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2024/01/24 14:00:18.000.888,=C:\Projeto\Crud 2.0\Unit1.pas</Transaction>
+    <Transaction>2024/01/24 14:22:08.000.350,C:\Projeto\Crud 2.0\uConsultaCli.dfm=C:\Projeto\Crud 2.0\Unit1.dfm</Transaction>
+    <Transaction>2024/01/24 14:22:08.000.350,C:\Projeto\Crud 2.0\uConsultaCli.pas=C:\Projeto\Crud 2.0\Unit1.pas</Transaction>
+    <Transaction>2024/01/24 14:51:41.000.237,=C:\Projeto\Crud 2.0\Unit1.pas</Transaction>
+    <Transaction>2024/01/24 15:21:23.000.972,C:\Projeto\Crud 2.0\uCadastraCli.pas=C:\Projeto\Crud 2.0\Unit1.pas</Transaction>
+    <Transaction>2024/01/24 15:21:23.000.972,C:\Projeto\Crud 2.0\uCadastraCli.dfm=C:\Projeto\Crud 2.0\Unit1.dfm</Transaction>
+    <Transaction>2024/01/25 11:15:48.000.828,=C:\Projeto\Crud 2.0\Unit1.pas</Transaction>
+    <Transaction>2024/01/25 11:39:14.000.108,C:\Projeto\Crud 2.0\Unit1.dfm=C:\Projeto\Crud 2.0\uEditaCli.dfm</Transaction>
+    <Transaction>2024/01/25 11:39:14.000.108,C:\Projeto\Crud 2.0\Unit1.pas=C:\Projeto\Crud 2.0\uEditaCli.pas</Transaction>
+    <Transaction>2024/01/25 13:51:18.000.650,=C:\Projeto\Crud 2.0\Unit2.pas</Transaction>
+    <Transaction>2024/01/25 14:02:54.000.481,C:\Projeto\Crud 2.0\Unit2.pas=C:\Projeto\Crud 2.0\uBuscaCli.pas</Transaction>
+    <Transaction>2024/01/25 14:02:54.000.481,C:\Projeto\Crud 2.0\Unit2.dfm=C:\Projeto\Crud 2.0\uBuscaCli.dfm</Transaction>
+    <Transaction>2024/01/25 16:01:42.920,=C:\Projeto\Crud 2.0\Unit1.pas</Transaction>
+    <Transaction>2024/01/25 16:16:01.073,C:\Projeto\Crud 2.0\uExcluirCli.pas=C:\Projeto\Crud 2.0\Unit1.pas</Transaction>
+    <Transaction>2024/01/25 16:16:01.073,C:\Projeto\Crud 2.0\uExcluirCli.dfm=C:\Projeto\Crud 2.0\Unit1.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

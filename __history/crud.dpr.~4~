@@ -1,0 +1,22 @@
+program crud;
+
+uses
+  Vcl.Forms,
+  uInicial in 'uInicial.pas' {fInicio},
+  uTabelas in 'uTabelas.pas' {dm: TDataModule},
+  uConsultaCli in 'uConsultaCli.pas' {fConsultaCli},
+  uCadastraCli in 'uCadastraCli.pas' {fCadastraCli},
+  uEditaCli in 'uEditaCli.pas' {Form1};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfInicio, fInicio);
+  Application.CreateForm(Tdm, dm);
+  Application.CreateForm(TfConsultaCli, fConsultaCli);
+  Application.CreateForm(TfCadastraCli, fCadastraCli);
+  Application.CreateForm(TForm1, Form1);
+  Application.Run;
+end.

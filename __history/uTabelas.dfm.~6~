@@ -1,0 +1,98 @@
+object dm: Tdm
+  Height = 480
+  Width = 640
+  object fdConnection: TFDConnection
+    Params.Strings = (
+      'Database=postgres'
+      'User_Name=postgres'
+      'Password=codorna8'
+      'DriverID=PG')
+    Connected = True
+    Left = 56
+    Top = 56
+  end
+  object fdTransaction: TFDTransaction
+    Connection = fdConnection
+    Left = 184
+    Top = 56
+  end
+  object pgDriverLink: TFDPhysPgDriverLink
+    VendorLib = 'C:\Program Files (x86)\PostgreSQL\psqlODBC\bin\libpq.dll'
+    Left = 416
+    Top = 56
+  end
+  object tbClientes: TFDTable
+    IndexFieldNames = 'cod_cliente'
+    Connection = fdConnection
+    ResourceOptions.AssignedValues = [rvEscapeExpand]
+    TableName = 'clientes'
+    Left = 64
+    Top = 152
+    object tbClientescod_cliente: TIntegerField
+      AutoGenerateValue = arAutoInc
+      FieldName = 'cod_cliente'
+      Origin = 'cod_cliente'
+    end
+    object tbClientesnome_completo: TWideStringField
+      FieldName = 'nome_completo'
+      Origin = 'nome_completo'
+      Size = 100
+    end
+    object tbClientescpf: TWideStringField
+      FieldName = 'cpf'
+      Origin = 'cpf'
+      EditMask = '999.999.999-99'
+      Size = 14
+    end
+    object tbClientesdata_nascimento: TDateField
+      FieldName = 'data_nascimento'
+      Origin = 'data_nascimento'
+      EditMask = '99/99/9999'
+    end
+    object tbClientestelefone: TWideStringField
+      FieldName = 'telefone'
+      Origin = 'telefone'
+      EditMask = '(99) 99999-9999'
+      Size = 15
+    end
+    object tbClientescep: TWideStringField
+      FieldName = 'cep'
+      Origin = 'cep'
+      EditMask = '99.999-999'
+      Size = 10
+    end
+    object tbClienteslogradouro: TWideStringField
+      FieldName = 'logradouro'
+      Origin = 'logradouro'
+      Size = 100
+    end
+    object tbClientesbairro: TWideStringField
+      FieldName = 'bairro'
+      Origin = 'bairro'
+      Size = 80
+    end
+    object tbClientesuf: TWideStringField
+      FieldName = 'uf'
+      Origin = 'uf'
+      FixedChar = True
+      Size = 2
+    end
+  end
+  object dsClientes: TDataSource
+    DataSet = tbClientes
+    Left = 192
+    Top = 160
+  end
+  object qConsultaCli: TFDQuery
+    Connection = fdConnection
+    SQL.Strings = (
+      'SELECT * FROM clientes')
+    Left = 64
+    Top = 240
+  end
+  object dsConsultaCli: TDataSource
+    DataSet = qConsultaCli
+    Left = 184
+    Top = 248
+  end
+end

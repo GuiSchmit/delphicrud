@@ -1,0 +1,149 @@
+unit uEditaCli;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Buttons,
+  Vcl.Mask, Vcl.DBCtrls, Xml.xmldom, Xml.XMLIntf, Xml.XMLDoc, Xml.Win.msxmldom;
+
+type
+  TfEditaCli = class(TForm)
+    Panel1: TPanel;
+    lNome: TLabel;
+    Label3: TLabel;
+    lDataNascimento: TLabel;
+    lTelefone: TLabel;
+    lCep: TLabel;
+    lLogradouro: TLabel;
+    lBairro: TLabel;
+    lUf: TLabel;
+    dbNome: TDBEdit;
+    dbCpf: TDBEdit;
+    dbDataNasc: TDBEdit;
+    dbTelefone: TDBEdit;
+    dbCep: TDBEdit;
+    dbLogradouro: TDBEdit;
+    dbBairro: TDBEdit;
+    dbUF: TDBEdit;
+    Panel3: TPanel;
+    btEditaCli: TBitBtn;
+    btCancelar: TBitBtn;
+    Panel2: TPanel;
+    btFechar: TBitBtn;
+    procedure FormActivate(Sender: TObject);
+    procedure lUfClick(Sender: TObject);
+    procedure btEditaCliClick(Sender: TObject);
+    procedure dbCepExit(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  fEditaCli: TfEditaCli;
+  xml: IXMLDocument;
+  url: String;
+  cep: String;
+  cleanCep: String;
+  _erro: String;
+  _true: String;
+  logradouro: String;
+  bairro: String;
+  uf: String;
+  i: integer;
+
+implementation
+
+{$R *.dfm}
+
+Uses utabelas;
+
+procedure TfEditaCli.btEditaCliClick(Sender: TObject);
+begin
+ if MessageDlg('Você confirma as alterações nesse cliente?',
+    mtConfirmation, [mbyes, mbno], 0) = mryes
+  then begin
+    dm.tbClientes.Post;
+    showmessage('Dados do cliente alterados com sucesso!');
+    dm.fdTransaction.CommitRetaining;
+
+    //Limpa os Edits
+    for i := 0 to ComponentCount-1 do
+    begin
+    if Components[i] is TDBEdit then
+      (Components[i] as TDBEdit).Clear;
+    end;
+  end
+  else begin
+    dm.tbClientes.Cancel;
+    dm.tbClientes.Close;
+
+    if dm.fdTransaction.Active then
+      dm.fdTransaction.Rollback;
+
+    //Limpa os Edits
+    for i := 0 to ComponentCount-1 do
+    begin
+    if Components[i] is TDBEdit then
+      (Components[i] as TDBEdit).Clear;
+    end;
+    showmessage('Dados do cliente mantidos sem alteração!');
+  end;
+end;
+
+procedure TfEditaCli.dbCepExit(Sender: TObject);
+begin
+    if dbCep.Text <> '' then
+  begin
+      //Validar CEP
+    _erro := 'erro';
+    _true := 'true';
+    cep := dbCep.Text;
+    cleanCep := cep.Replace('.', '');
+    cleanCep := cleanCep.Replace('-', '');
+    if (Length(cleanCep) > 8) then
+    begin
+      Application.MessageBox('CEP INVÁLIDO','ERRO - AVISO DO SISTEMA!',
+      MB_ICONWARNING+MB_OK);
+    end
+    else
+
+      xml := TXMLDocument.Create(nil);
+      url := 'https://viacep.com.br/ws/' + cleanCep + '/xml/';
+      xml.FileName := url;
+      xml.Active := True;
+
+      if xml.DocumentElement.ChildValues[0] = _true then
+        Application.MessageBox('CEP INVÁLIDO','ERRO - AVISO DO SISTEMA!',
+        MB_ICONWARNING+MB_OK);
+
+        logradouro := xml.DocumentElement.ChildNodes['logradouro'].Text;
+        bairro := xml.DocumentElement.ChildNodes['bairro'].Text;
+        uf := xml.DocumentElement.ChildNodes['uf'].Text;
+
+        dbLogradouro.Text := logradouro;
+        dbBairro.Text := bairro;
+        dbUf.Text := uf;
+        btEditaCli.SetFocus;
+
+        xml := nil;
+end;
+
+procedure TfEditaCli.FormActivate(Sender: TObject);
+begin
+  if dm.fdTransaction.Active then
+    dm.fdTransaction.Rollback;
+
+  dm.fdTransaction.StartTransaction;
+  dm.tbclientes.Edit;
+  dbNome.SetFocus;
+end;
+
+procedure TfEditaCli.lUfClick(Sender: TObject);
+begin
+
+end;
+
+end.

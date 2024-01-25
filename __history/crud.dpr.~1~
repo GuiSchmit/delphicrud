@@ -1,0 +1,16 @@
+program crud;
+
+uses
+  Vcl.Forms,
+  uInicial in 'uInicial.pas' {uInicio},
+  uTabelas in 'uTabelas.pas' {dm: TDataModule};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TuInicio, uInicio);
+  Application.CreateForm(Tdm, dm);
+  Application.Run;
+end.

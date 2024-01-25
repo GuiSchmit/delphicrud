@@ -1,0 +1,93 @@
+unit uCadastraCli;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Mask,
+  Vcl.DBCtrls, Vcl.Buttons;
+
+type
+  TfCadastraCli = class(TForm)
+    Panel1: TPanel;
+    Panel2: TPanel;
+    lNome: TLabel;
+    dbNome: TDBEdit;
+    Label3: TLabel;
+    dbCpf: TDBEdit;
+    lDataNascimento: TLabel;
+    dbDataNasc: TDBEdit;
+    lTelefone: TLabel;
+    dbTelefone: TDBEdit;
+    lCep: TLabel;
+    dbCep: TDBEdit;
+    lLogradouro: TLabel;
+    dbLogradouro: TDBEdit;
+    lBairro: TLabel;
+    dbBairro: TDBEdit;
+    lUf: TLabel;
+    dbUF: TDBEdit;
+    Panel3: TPanel;
+    btCadastraCli: TBitBtn;
+    btCancelar: TBitBtn;
+    btFechar: TBitBtn;
+    Label1: TLabel;
+    dbCodigo: TDBEdit;
+    procedure dbNomeChange(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure btCadastraCliClick(Sender: TObject);
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  fCadastraCli: TfCadastraCli;
+
+implementation
+
+{$R *.dfm}
+
+Uses uTabelas, Data.DB;
+
+procedure TfCadastraCli.btCadastraCliClick(Sender: TObject);
+begin
+
+  if dm.tbClientes.State in [dsinsert] then
+  begin
+    dm.tbClientes.Post;
+    btCadastraCli.Enabled := true;
+    btFechar.SetFocus;
+  end;
+  dm.fdTransaction.CommitRetaining;
+  btCadastraCli.Enabled := false;
+  dm.tbClientes.Close;
+
+
+
+end;
+
+procedure TfCadastraCli.dbNomeChange(Sender: TObject);
+begin
+  if dbNome.Text = ''  then btCadastraCli.Enabled := false
+  else begin
+   btCadastraCli.Enabled := true;
+   btCancelar.Enabled := true;
+  end;
+end;
+
+procedure TfCadastraCli.FormActivate(Sender: TObject);
+begin
+
+  
+  dm.fdTransaction.StartTransaction;
+  dm.tbClientes.Open();
+  dm.tbClientes.Append;
+  dbNome.SetFocus;
+  btCancelar.Enabled := false;
+  btCadastraCli.Enabled := false;
+end;
+
+end.
