@@ -8,7 +8,8 @@ uses
   uCadastraCli in 'uCadastraCli.pas' {fCadastraCli},
   uEditaCli in 'uEditaCli.pas' {fEditaCli},
   uBuscaCli in 'uBuscaCli.pas' {fBuscaCli},
-  uExcluirCli in 'uExcluirCli.pas' {fExcluirCli};
+  uExcluirCli in 'uExcluirCli.pas' {fExcluirCli},
+  uFuncoes in 'uFuncoes.pas';
 
 {$R *.res}
 

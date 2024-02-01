@@ -119,46 +119,63 @@ object fBuscaCli: TfBuscaCli
         item
           Expanded = False
           FieldName = 'codigo'
+          Title.Caption = 'C'#243'digo'
+          Width = 50
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'nome_completo'
+          Title.Caption = 'Nome Completo'
+          Width = 250
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'cpf'
+          Title.Caption = 'CPF'
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'data_nascimento'
+          Title.Caption = 'Data Nasc.'
+          Width = 65
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'telefone'
+          Title.Caption = 'Telefone'
+          Width = 90
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'cep'
+          Title.Caption = 'CEP'
+          Width = 65
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'logradouro'
+          Title.Caption = 'Logradouro'
+          Width = 200
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'bairro'
+          Title.Caption = 'Bairro'
+          Width = 200
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'uf'
+          Title.Caption = 'UF'
+          Width = 22
           Visible = True
         end>
     end

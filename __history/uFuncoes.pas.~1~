@@ -1,0 +1,25 @@
+unit uFuncoes;
+
+interface
+uses  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+      Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Mask,
+      Vcl.DBCtrls, Vcl.Buttons, Xml.xmldom, Xml.XMLIntf, Xml.XMLDoc, Xml.Win.msxmldom;
+
+function VerificaData( Texto : String) : Boolean;
+
+implementation
+
+function VerificaData( Texto : String) : Boolean;
+var
+   Data : String;
+begin
+  Data := Copy(Texto,1,2) + '/' + Copy(Texto,3,2) + '/' + Copy(Texto,5,4);
+  try
+    StrToDate(Data);
+    Result := True;
+  except
+    Application.MessageBox('DATA DE NASCIMENTO INVÁLIDA.','ERRO - AVISO DO SISTEMA!', MB_ICONWARNING+MB_OK);
+    Result := False;
+    end;
+end;
+end.

@@ -10,6 +10,7 @@ object fInicio: TfInicio
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  Position = poDesktopCenter
   OnActivate = FormActivate
   TextHeight = 15
   object Panel1: TPanel

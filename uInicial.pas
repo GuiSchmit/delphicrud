@@ -36,7 +36,7 @@ implementation
 
 {$R *.dfm}
 
-Uses uTabelas, uConsultaCli, uCadastraCli, uBuscaCli, uExcluirCli;
+Uses uTabelas, uConsultaCli, uCadastraCli, uBuscaCli, uExcluirCli, uFuncoes;
 
 procedure TfInicio.btCadastraCliClick(Sender: TObject);
 begin
@@ -59,7 +59,6 @@ procedure TfInicio.btEditaCliClick(Sender: TObject);
 begin
   Application.CreateForm(TfBuscaCli, fBuscaCli);
   fBuscaCli.showmodal;
-
 end;
 
 procedure TfInicio.btExcluiCliClick(Sender: TObject);
@@ -70,6 +69,7 @@ end;
 
 procedure TfInicio.btFecharClick(Sender: TObject);
 begin
+  uFuncoes.CancelarTransaction;
   Free;
 end;
 

@@ -10,6 +10,7 @@ object fExcluirCli: TfExcluirCli
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  Position = poDesktopCenter
   OnActivate = FormActivate
   TextHeight = 15
   object Panel1: TPanel
@@ -23,9 +24,8 @@ object fExcluirCli: TfExcluirCli
     BevelWidth = 6
     BorderStyle = bsSingle
     TabOrder = 0
-    ExplicitLeft = -51
-    ExplicitWidth = 1005
-    ExplicitHeight = 656
+    ExplicitWidth = 950
+    ExplicitHeight = 657
     object Panel2: TPanel
       Left = 12
       Top = 12
@@ -40,7 +40,7 @@ object fExcluirCli: TfExcluirCli
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 973
+      ExplicitWidth = 918
       object Label1: TLabel
         Left = 320
         Top = 16
@@ -56,7 +56,7 @@ object fExcluirCli: TfExcluirCli
         Align = alBottom
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitWidth = 969
+        ExplicitWidth = 914
         object Label2: TLabel
           Left = 16
           Top = 25
@@ -120,46 +120,64 @@ object fExcluirCli: TfExcluirCli
         item
           Expanded = False
           FieldName = 'codigo'
+          Title.Caption = 'C'#243'digo'
+          Width = 50
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'nome_completo'
+          Title.Caption = 'Nome Completo'
+          Width = 250
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'cpf'
+          Title.Caption = 'CPF'
+          Width = 90
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'data_nascimento'
+          Title.Caption = 'Data Nasc.'
+          Width = 80
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'telefone'
+          Title.Caption = 'Telefone'
+          Width = 95
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'cep'
+          Title.Caption = 'CEP'
+          Width = 80
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'logradouro'
+          Title.Caption = 'Logradouro'
+          Width = 180
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'bairro'
+          Title.Caption = 'Bairro'
+          Width = 150
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'uf'
+          Title.Caption = 'UF'
+          Width = 22
           Visible = True
         end>
     end
