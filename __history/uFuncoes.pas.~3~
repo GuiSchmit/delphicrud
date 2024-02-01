@@ -1,0 +1,52 @@
+unit uFuncoes;
+
+interface
+uses  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+      Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Mask,
+      Vcl.DBCtrls, Vcl.Buttons, Data.DB;
+
+function ValidaData(data: String) : Boolean;
+procedure LimpaEdits(form: TFOrm);
+procedure Cadastrar();
+
+
+implementation
+
+uses uCadastraCli, uTabelas;
+
+function ValidaData(data : String) : Boolean;
+begin
+  try
+    StrToDate(data);
+    Result := True;
+  except
+    Application.MessageBox('DATA DE NASCIMENTO INVÁLIDA.','ERRO - AVISO DO SISTEMA!', MB_ICONWARNING+MB_OK);
+    Result := False;
+    end;
+end;
+
+procedure LimpaEdits(form: TFOrm);
+var
+i: integer;
+begin
+  for i := 0 to form.ComponentCount-1 do
+    begin
+    if form.Components[i] is TDBEdit then
+      (form.Components[i] as TDBEdit).Clear;
+    end;
+end;
+
+procedure Cadastrar();
+begin
+   if dm.tbClientes.State in [dsinsert] then
+    begin
+      dm.tbClientes.Post;
+    end;
+    dm.fdTransaction.CommitRetaining;
+    dm.tbClientes.Close;
+    dm.tbClientes.Open();
+end;
+
+
+
+end.

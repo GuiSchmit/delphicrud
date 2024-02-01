@@ -10,6 +10,7 @@ object fEditaCli: TfEditaCli
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  Position = poDesktopCenter
   OnActivate = FormActivate
   TextHeight = 15
   object Panel1: TPanel
@@ -34,7 +35,7 @@ object fEditaCli: TfEditaCli
     ExplicitHeight = 653
     object lNome: TLabel
       Left = 52
-      Top = 95
+      Top = 93
       Width = 103
       Height = 15
       Caption = 'NOME COMPLETO:'
@@ -42,7 +43,7 @@ object fEditaCli: TfEditaCli
     end
     object Label3: TLabel
       Left = 132
-      Top = 135
+      Top = 133
       Width = 23
       Height = 15
       Caption = 'CPF:'
@@ -50,15 +51,14 @@ object fEditaCli: TfEditaCli
     end
     object lDataNascimento: TLabel
       Left = 24
-      Top = 172
+      Top = 173
       Width = 131
       Height = 15
       Caption = 'DATA DE NASCIMENTO:'
-      FocusControl = dbDataNasc
     end
     object lTelefone: TLabel
       Left = 97
-      Top = 209
+      Top = 213
       Width = 58
       Height = 15
       Caption = 'TELEFONE:'
@@ -66,7 +66,7 @@ object fEditaCli: TfEditaCli
     end
     object lCep: TLabel
       Left = 132
-      Top = 246
+      Top = 253
       Width = 23
       Height = 15
       Caption = 'CEP:'
@@ -74,7 +74,7 @@ object fEditaCli: TfEditaCli
     end
     object lLogradouro: TLabel
       Left = 68
-      Top = 295
+      Top = 293
       Width = 87
       Height = 15
       Caption = 'LOGRADOURO:'
@@ -82,7 +82,7 @@ object fEditaCli: TfEditaCli
     end
     object lBairro: TLabel
       Left = 107
-      Top = 331
+      Top = 333
       Width = 48
       Height = 15
       Caption = 'BAIRRO:'
@@ -90,7 +90,7 @@ object fEditaCli: TfEditaCli
     end
     object lUf: TLabel
       Left = 137
-      Top = 371
+      Top = 373
       Width = 18
       Height = 15
       Caption = 'UF:'
@@ -98,7 +98,7 @@ object fEditaCli: TfEditaCli
     end
     object dbNome: TDBEdit
       Left = 173
-      Top = 92
+      Top = 90
       Width = 313
       Height = 23
       CharCase = ecUpperCase
@@ -108,74 +108,61 @@ object fEditaCli: TfEditaCli
     end
     object dbCpf: TDBEdit
       Left = 173
-      Top = 132
+      Top = 130
       Width = 204
       Height = 23
       DataField = 'cpf'
       DataSource = dm.dsClientes
-      MaxLength = 14
       TabOrder = 1
-    end
-    object dbDataNasc: TDBEdit
-      Left = 173
-      Top = 169
-      Width = 144
-      Height = 23
-      DataField = 'data_nascimento'
-      DataSource = dm.dsClientes
-      MaxLength = 10
-      TabOrder = 2
     end
     object dbTelefone: TDBEdit
       Left = 173
-      Top = 206
+      Top = 210
       Width = 215
       Height = 23
       DataField = 'telefone'
       DataSource = dm.dsClientes
-      MaxLength = 15
-      TabOrder = 3
+      TabOrder = 2
     end
     object dbCep: TDBEdit
       Left = 173
-      Top = 243
+      Top = 250
       Width = 142
       Height = 23
       DataField = 'cep'
       DataSource = dm.dsClientes
-      MaxLength = 10
-      TabOrder = 4
+      TabOrder = 3
       OnExit = dbCepExit
     end
     object dbLogradouro: TDBEdit
       Left = 173
-      Top = 292
+      Top = 290
       Width = 290
       Height = 23
       CharCase = ecUpperCase
       DataField = 'logradouro'
       DataSource = dm.dsClientes
-      TabOrder = 5
+      TabOrder = 4
     end
     object dbBairro: TDBEdit
       Left = 173
-      Top = 328
+      Top = 330
       Width = 290
       Height = 23
       CharCase = ecUpperCase
       DataField = 'bairro'
       DataSource = dm.dsClientes
-      TabOrder = 6
+      TabOrder = 5
     end
     object dbUF: TDBEdit
       Left = 173
-      Top = 368
+      Top = 370
       Width = 24
       Height = 23
       CharCase = ecUpperCase
       DataField = 'uf'
       DataSource = dm.dsClientes
-      TabOrder = 7
+      TabOrder = 6
     end
     object Panel3: TPanel
       Left = 272
@@ -184,7 +171,7 @@ object fEditaCli: TfEditaCli
       Height = 81
       Color = clSkyBlue
       ParentBackground = False
-      TabOrder = 8
+      TabOrder = 7
       object btEditaCli: TBitBtn
         Left = 40
         Top = 32
@@ -201,6 +188,7 @@ object fEditaCli: TfEditaCli
         Height = 25
         Caption = '&CANCELAR'
         TabOrder = 1
+        OnClick = btCancelarClick
       end
     end
     object Panel2: TPanel
@@ -216,7 +204,7 @@ object fEditaCli: TfEditaCli
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 9
+      TabOrder = 8
       ExplicitWidth = 928
       object btFechar: TBitBtn
         Left = 848
@@ -233,6 +221,15 @@ object fEditaCli: TfEditaCli
         TabOrder = 0
         OnClick = btFecharClick
       end
+    end
+    object DBEdit1: TDBEdit
+      Left = 173
+      Top = 170
+      Width = 154
+      Height = 23
+      DataField = 'data_nascimento'
+      DataSource = dm.dsClientes
+      TabOrder = 9
     end
   end
 end

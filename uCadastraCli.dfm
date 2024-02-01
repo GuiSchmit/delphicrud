@@ -10,6 +10,7 @@ object fCadastraCli: TfCadastraCli
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  Position = poDesktopCenter
   OnActivate = FormActivate
   TextHeight = 15
   object Panel1: TPanel
@@ -31,7 +32,7 @@ object fCadastraCli: TfCadastraCli
     ParentFont = False
     TabOrder = 0
     ExplicitWidth = 946
-    ExplicitHeight = 473
+    ExplicitHeight = 590
     object lNome: TLabel
       Left = 52
       Top = 63
@@ -50,15 +51,14 @@ object fCadastraCli: TfCadastraCli
     end
     object lDataNascimento: TLabel
       Left = 24
-      Top = 140
+      Top = 143
       Width = 131
       Height = 15
       Caption = 'DATA DE NASCIMENTO:'
-      FocusControl = dbDataNasc
     end
     object lTelefone: TLabel
       Left = 97
-      Top = 169
+      Top = 183
       Width = 58
       Height = 15
       Caption = 'TELEFONE:'
@@ -66,7 +66,7 @@ object fCadastraCli: TfCadastraCli
     end
     object lCep: TLabel
       Left = 132
-      Top = 198
+      Top = 223
       Width = 23
       Height = 15
       Caption = 'CEP:'
@@ -74,7 +74,7 @@ object fCadastraCli: TfCadastraCli
     end
     object lLogradouro: TLabel
       Left = 68
-      Top = 239
+      Top = 263
       Width = 87
       Height = 15
       Caption = 'LOGRADOURO:'
@@ -82,15 +82,15 @@ object fCadastraCli: TfCadastraCli
     end
     object lBairro: TLabel
       Left = 107
-      Top = 275
+      Top = 303
       Width = 48
       Height = 15
       Caption = 'BAIRRO:'
       FocusControl = dbBairro
     end
     object lUf: TLabel
-      Left = 137
-      Top = 307
+      Left = 132
+      Top = 343
       Width = 18
       Height = 15
       Caption = 'UF:'
@@ -99,7 +99,7 @@ object fCadastraCli: TfCadastraCli
     object dbNome: TDBEdit
       Left = 173
       Top = 60
-      Width = 313
+      Width = 303
       Height = 23
       CharCase = ecUpperCase
       DataField = 'nome_completo'
@@ -110,80 +110,64 @@ object fCadastraCli: TfCadastraCli
     object dbCpf: TDBEdit
       Left = 173
       Top = 100
-      Width = 204
+      Width = 194
       Height = 23
       DataField = 'cpf'
       DataSource = dm.dsClientes
-      MaxLength = 14
       TabOrder = 1
-    end
-    object dbDataNasc: TDBEdit
-      Left = 173
-      Top = 137
-      Width = 144
-      Height = 23
-      DataField = 'data_nascimento'
-      DataSource = dm.dsClientes
-      MaxLength = 10
-      TabOrder = 2
     end
     object dbTelefone: TDBEdit
       Left = 173
-      Top = 166
-      Width = 215
+      Top = 180
+      Width = 205
       Height = 23
       DataField = 'telefone'
       DataSource = dm.dsClientes
-      MaxLength = 15
       TabOrder = 3
     end
     object dbCep: TDBEdit
       Left = 173
-      Top = 195
-      Width = 142
+      Top = 220
+      Width = 132
       Height = 23
       DataField = 'cep'
       DataSource = dm.dsClientes
-      MaxLength = 10
       TabOrder = 4
       OnExit = dbCepExit
     end
     object dbLogradouro: TDBEdit
       Left = 173
-      Top = 236
-      Width = 290
+      Top = 260
+      Width = 280
       Height = 23
       CharCase = ecUpperCase
       DataField = 'logradouro'
       DataSource = dm.dsClientes
       TabOrder = 5
-      OnClick = dbLogradouroClick
     end
     object dbBairro: TDBEdit
       Left = 173
-      Top = 272
-      Width = 290
+      Top = 300
+      Width = 280
       Height = 23
       CharCase = ecUpperCase
       DataField = 'bairro'
       DataSource = dm.dsClientes
       TabOrder = 6
-      OnClick = dbBairroClick
     end
     object dbUF: TDBEdit
       Left = 173
-      Top = 301
-      Width = 24
+      Top = 340
+      Width = 28
       Height = 23
       CharCase = ecUpperCase
       DataField = 'uf'
       DataSource = dm.dsClientes
       TabOrder = 7
-      OnClick = dbUFClick
     end
     object Panel3: TPanel
-      Left = 280
-      Top = 336
+      Left = 290
+      Top = 400
       Width = 385
       Height = 81
       Color = clSkyBlue
@@ -207,6 +191,15 @@ object fCadastraCli: TfCadastraCli
         TabOrder = 1
         OnClick = btCancelarClick
       end
+    end
+    object dbDataNasc: TDBEdit
+      Left = 173
+      Top = 140
+      Width = 192
+      Height = 23
+      DataField = 'data_nascimento'
+      DataSource = dm.dsClientes
+      TabOrder = 2
     end
   end
   object Panel2: TPanel

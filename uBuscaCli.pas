@@ -56,13 +56,7 @@ begin
       Application.CreateForm(TfEditaCli, fEditaCli);
       fEditaCli.showmodal;
     end;
-
   end;
-
-
-
-
-
 end;
 
 procedure TfBuscaCli.dbNomeChange(Sender: TObject);
@@ -79,6 +73,7 @@ end;
 
 procedure TfBuscaCli.FormActivate(Sender: TObject);
 begin
+  dm.qConsultaCli.Open();
   with dm.qConsultaCli do
   begin
     close;

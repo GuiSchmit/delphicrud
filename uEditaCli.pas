@@ -20,7 +20,6 @@ type
     lUf: TLabel;
     dbNome: TDBEdit;
     dbCpf: TDBEdit;
-    dbDataNasc: TDBEdit;
     dbTelefone: TDBEdit;
     dbCep: TDBEdit;
     dbLogradouro: TDBEdit;
@@ -31,10 +30,12 @@ type
     btCancelar: TBitBtn;
     Panel2: TPanel;
     btFechar: TBitBtn;
+    DBEdit1: TDBEdit;
     procedure FormActivate(Sender: TObject);
     procedure btEditaCliClick(Sender: TObject);
     procedure dbCepExit(Sender: TObject);
     procedure btFecharClick(Sender: TObject);
+    procedure btCancelarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -43,22 +44,19 @@ type
 
 var
   fEditaCli: TfEditaCli;
-  xml: IXMLDocument;
-  url: String;
-  cep: String;
-  cleanCep: String;
-  _erro: String;
-  _true: String;
-  logradouro: String;
-  bairro: String;
-  uf: String;
-  i: integer;
+  logradouro, bairro, uf: string;
 
 implementation
 
 {$R *.dfm}
 
-Uses utabelas;
+Uses utabelas, uFuncoes;
+
+procedure TfEditaCli.btCancelarClick(Sender: TObject);
+begin
+  uFuncoes.CancelarTransaction;
+  Close;
+end;
 
 procedure TfEditaCli.btEditaCliClick(Sender: TObject);
 begin
@@ -68,51 +66,44 @@ begin
     dm.tbClientes.Post;
     showmessage('Dados do cliente alterados com sucesso!');
     dm.fdTransaction.CommitRetaining;
-
-    Close;
- end
- else
- begin
-    dm.tbClientes.Cancel;
-    dm.tbClientes.Close;
-
-    if dm.fdTransaction.Active then
-      dm.fdTransaction.Rollback;
-
-    //Limpa os Edits
-    for i := 0 to ComponentCount-1 do
-    begin
-    if Components[i] is TDBEdit then
-      (Components[i] as TDBEdit).Clear;
-    end;
+  end
+  else
+  begin
+    uFuncoes.CancelarTransaction;
+    uFuncoes.LimpaEdits(fEditaCli);
     showmessage('Dados do cliente mantidos sem alteração!');
- end;
+  end;
+  Close;
 end;
 
 procedure TfEditaCli.btFecharClick(Sender: TObject);
 begin
+  uFuncoes.CancelarTransaction;
   Close;
 end;
 
 procedure TfEditaCli.dbCepExit(Sender: TObject);
+var
+xml: IXMLDocument;
+url, cep, _erro, _true: String;
+
 begin
-    if dbCep.Text <> '' then
+  if dbCep.Text <> '' then
   begin
-      //Validar CEP
     _erro := 'erro';
     _true := 'true';
     cep := dbCep.Text;
-    cleanCep := cep.Replace('.', '');
-    cleanCep := cleanCep.Replace('-', '');
-    if (Length(cleanCep) > 8) then
+    cep := cep.Replace('.', '');
+    cep := cep.Replace('-', '');
+
+    if (Length(cep) > 8) then
     begin
       Application.MessageBox('CEP INVÁLIDO','ERRO - AVISO DO SISTEMA!',
       MB_ICONWARNING+MB_OK);
     end
     else
-
       xml := TXMLDocument.Create(nil);
-      url := 'https://viacep.com.br/ws/' + cleanCep + '/xml/';
+      url := 'https://viacep.com.br/ws/' + cep + '/xml/';
       xml.FileName := url;
       xml.Active := True;
 
@@ -130,15 +121,15 @@ begin
         btEditaCli.SetFocus;
 
         xml := nil;
+
+    end;
   end;
-end;
 
 procedure TfEditaCli.FormActivate(Sender: TObject);
 begin
-  if dm.fdTransaction.Active then
-    dm.fdTransaction.Rollback;
-
+  uFuncoes.CancelarTransaction;
   dm.fdTransaction.StartTransaction;
+  dm.tbClientes.Open();
   dm.tbclientes.Edit;
   dbNome.SetFocus;
 end;

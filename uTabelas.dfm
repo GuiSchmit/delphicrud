@@ -1,24 +1,7 @@
 object dm: Tdm
   Height = 480
   Width = 640
-  object fdConnection: TFDConnection
-    Params.Strings = (
-      'Database=postgres'
-      'User_Name=postgres'
-      'Password=codorna8'
-      'DriverID=PG')
-    Connected = True
-    Transaction = fdTransaction
-    Left = 48
-    Top = 40
-  end
-  object fdTransaction: TFDTransaction
-    Connection = fdConnection
-    Left = 144
-    Top = 40
-  end
   object tbClientes: TFDTable
-    Active = True
     IndexFieldNames = 'codigo'
     Connection = fdConnection
     ResourceOptions.AssignedValues = [rvEscapeExpand]
@@ -42,10 +25,11 @@ object dm: Tdm
       EditMask = '999.999.999-99'
       Size = 14
     end
-    object tbClientesdata_nascimento: TDateField
+    object tbClientesdata_nascimento: TWideStringField
       FieldName = 'data_nascimento'
       Origin = 'data_nascimento'
       EditMask = '99/99/9999'
+      Size = 10
     end
     object tbClientestelefone: TWideStringField
       FieldName = 'telefone'
@@ -85,11 +69,6 @@ object dm: Tdm
     Left = 56
     Top = 264
   end
-  object pgDriverLink: TFDPhysPgDriverLink
-    VendorLib = 'C:\Program Files (x86)\PostgreSQL\psqlODBC\bin\libpq.dll'
-    Left = 240
-    Top = 40
-  end
   object dsClientes: TDataSource
     DataSet = tbClientes
     Left = 152
@@ -99,5 +78,25 @@ object dm: Tdm
     DataSet = qConsultaCli
     Left = 168
     Top = 264
+  end
+  object fdConnection: TFDConnection
+    Params.Strings = (
+      'Database=postgres'
+      'User_Name=postgres'
+      'Password=codorna8'
+      'DriverID=PG')
+    Connected = True
+    Left = 48
+    Top = 48
+  end
+  object fdTransaction: TFDTransaction
+    Connection = fdConnection
+    Left = 168
+    Top = 48
+  end
+  object pgDriverLink: TFDPhysPgDriverLink
+    VendorLib = 'C:\Program Files (x86)\PostgreSQL\psqlODBC\bin\libpq.dll'
+    Left = 328
+    Top = 48
   end
 end

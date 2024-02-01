@@ -12,22 +12,22 @@ uses
 
 type
   Tdm = class(TDataModule)
-    fdConnection: TFDConnection;
-    fdTransaction: TFDTransaction;
     tbClientes: TFDTable;
     qConsultaCli: TFDQuery;
-    pgDriverLink: TFDPhysPgDriverLink;
     dsClientes: TDataSource;
     dsConsultaCli: TDataSource;
     tbClientesnome_completo: TWideStringField;
     tbClientescpf: TWideStringField;
-    tbClientesdata_nascimento: TDateField;
     tbClientestelefone: TWideStringField;
     tbClientescep: TWideStringField;
     tbClienteslogradouro: TWideStringField;
     tbClientesbairro: TWideStringField;
     tbClientesuf: TWideStringField;
     tbClientescodigo: TLargeintField;
+    fdConnection: TFDConnection;
+    fdTransaction: TFDTransaction;
+    pgDriverLink: TFDPhysPgDriverLink;
+    tbClientesdata_nascimento: TWideStringField;
   private
     { Private declarations }
   public
